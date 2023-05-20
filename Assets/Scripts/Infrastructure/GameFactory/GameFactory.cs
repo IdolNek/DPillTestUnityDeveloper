@@ -1,22 +1,28 @@
-﻿namespace Assets.Scripts.Infrastructure.GameFactory
+﻿using Assets.Scripts.Infrastructure.Services.AssetManagement;
+using Assets.Scripts.Infrastructure.Services.PersistentProgress;
+using Assets.Scripts.Infrastructure.Services.StaticData;
+using Assets.Scripts.Infrastructure.Services.Windows;
+using UnityEngine;
+
+namespace Assets.Scripts.Infrastructure.GameFactory
 {
     public class GameFactory : IGameFactory
     {
 
-        //private GameObject HeroGameObject { get; set; }
-        //private readonly IAsset _asset;
-        //private readonly IStaticDataService _staticData;
-        //private readonly IPersistentProgressService _persistentProgress;
-        //private readonly IWindowService _windowService;
+        private GameObject HeroGameObject { get; set; }
+        private readonly IAssetProvider _asset;
+        private readonly IStaticDataService _staticData;
+        private readonly IPersistentProgressService _persistentProgress;
+        private readonly IWindowsService _windowService;
 
-        //public GameFactory(IAsset asset, IStaticDataService staticData,
-        //    IPersistentProgressService persistentProgress, IWindowService windowService)
-        //{
-        //    _asset = asset;
-        //    _staticData = staticData;
-        //    _persistentProgress = persistentProgress;
-        //    _windowService = windowService;
-        //}
+        public GameFactory(IAssetProvider asset, IStaticDataService staticData,
+            IPersistentProgressService persistentProgress, IWindowsService windowService)
+        {
+            _asset = asset;
+            _staticData = staticData;
+            _persistentProgress = persistentProgress;
+            _windowService = windowService;
+        }
 
         //public void WarmUp()
         //{

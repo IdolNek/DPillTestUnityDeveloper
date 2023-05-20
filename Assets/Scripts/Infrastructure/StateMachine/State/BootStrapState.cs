@@ -1,4 +1,5 @@
-﻿using Assets.Scripts.Infrastructure.Services.AssetManagement;
+﻿using Assets.Scripts.Infrastructure.GameFactory;
+using Assets.Scripts.Infrastructure.Services.AssetManagement;
 using Assets.Scripts.Infrastructure.Services.Input;
 using Assets.Scripts.Infrastructure.Services.PersistentProgress;
 using Assets.Scripts.Infrastructure.Services.ServiceLocater;
@@ -10,7 +11,7 @@ namespace Assets.Scripts.Infrastructure.StateMachine.State
     public class BootStrapState : IState
     {
         private const string _initialScene = "Initial";
-        private const string _gameScene = "LevelOne";
+        private const string _gameScene = "GameScene";
         private readonly GameStateMachine _stateMachine;
         private readonly SceneLoader _sceneLoader;
         private readonly AllServices _allServices;
@@ -49,11 +50,11 @@ namespace Assets.Scripts.Infrastructure.StateMachine.State
                 new PersistentProgressService());
 
 
-            //_allServices.RegisterSingle<IGameFactory>(
-            //    new GameFactory(_allServices.Single<IAssetProvider>()
-            //        , _allServices.Single<IStaticDataService>()
-            //        , _allServices.Single<IPersistentProgressService>()
-            //        , _allServices.Single<ITimerEventSystem>()));
+            _allServices.RegisterSingle<IGameFactory>(
+                new GameFactory(_allServices.Single<IAssetProvider>()
+                    , _allServices.Single<IStaticDataService>()
+                    , _allServices.Single<IPersistentProgressService>()
+                    , _allServices.Single<ITimerEventSystem>()));
 
 
             //_allServices.RegisterSingle<IUIFactory>(new UIFactory(_allServices.Single<IAssetProvider>()
