@@ -1,4 +1,4 @@
-﻿using Assets.Scripts.Character;
+﻿using Assets.Scripts.Character.Player;
 using Assets.Scripts.Infrastructure.Services.Asset;
 using Assets.Scripts.Infrastructure.Services.Input;
 using Assets.Scripts.Infrastructure.Services.PlayerProgress;

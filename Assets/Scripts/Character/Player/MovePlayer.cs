@@ -1,7 +1,7 @@
 using Assets.Scripts.Infrastructure.Services.Input;
 using UnityEngine;
 
-namespace Assets.Scripts.Character
+namespace Assets.Scripts.Character.Player
 {
     public class MovePlayer : MonoBehaviour
     {
@@ -16,7 +16,7 @@ namespace Assets.Scripts.Character
 
         private const float epsilon = 0.001f;
 
-        public void Construct(IInputService inputService) => 
+        public void Construct(IInputService inputService) =>
             _inputService = inputService;
 
         void Start()

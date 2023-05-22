@@ -9,8 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2614242618169837370}
-  - component: {fileID: 4400309577863222637}
   - component: {fileID: 4492704857522244031}
+  - component: {fileID: 2685955889882941260}
+  - component: {fileID: 2997453244214935376}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -34,21 +35,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4400309577863222637
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2614242618169837365}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 186a23abea1ffb945b32e0c170d26c2c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _characterController: {fileID: 4492704857522244031}
-  _movementSpeed: 5
-  _turnSpeed: 5
 --- !u!143 &4492704857522244031
 CharacterController:
   m_ObjectHideFlags: 0
@@ -67,6 +53,35 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 1, z: 0}
+--- !u!114 &2685955889882941260
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2614242618169837365}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a20eb860b4bc4a4287e47d0716cc6f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _animator: {fileID: 2614242616269703623}
+  _characterController: {fileID: 4492704857522244031}
+--- !u!114 &2997453244214935376
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2614242618169837365}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a619de0eb6507b7438304cd46aac80a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _characterController: {fileID: 4492704857522244031}
+  _movementSpeed: 5
+  _turnSpeed: 5
 --- !u!1001 &2614242616269703617
 PrefabInstance:
   m_ObjectHideFlags: 0
