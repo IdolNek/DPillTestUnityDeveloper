@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4400309577863222637}
   - component: {fileID: 4492704857522244031}
   m_Layer: 0
-  m_Name: VoodooCustomCharacter
+  m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
