@@ -5,11 +5,11 @@ namespace Assets.Scripts.Infrastructure
 {
     public class Game
     {
-        public GameStateMachine GameStateMachine;
+        private GameStateMachine _gameStateMachine;
+        public GameStateMachine GameStateMachine => _gameStateMachine;
 
-        public Game(ICoroutineRunner coroutineRunner)
-        {
-            GameStateMachine = new GameStateMachine(new SceneLoader(coroutineRunner), AllServices.Container);
-        }
+        public Game(ICoroutineRunner coroutineRunner) => 
+            _gameStateMachine = new GameStateMachine(new SceneLoader(coroutineRunner), new AllServices());
+
     }
 }

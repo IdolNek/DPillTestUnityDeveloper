@@ -1,17 +1,19 @@
-﻿using Assets.Scripts.Infrastructure.GameFactory;
-using Assets.Scripts.Infrastructure.Services.AssetManagement;
+﻿using Assets.Scripts.Infrastructure.Factory;
+using Assets.Scripts.Infrastructure.Services.Asset;
 using Assets.Scripts.Infrastructure.Services.Input;
-using Assets.Scripts.Infrastructure.Services.PersistentProgress;
+using Assets.Scripts.Infrastructure.Services.PlayerProgress;
 using Assets.Scripts.Infrastructure.Services.ServiceLocater;
 using Assets.Scripts.Infrastructure.Services.StaticData;
+using Assets.Scripts.Infrastructure.Services.Windows;
+using Assets.Scripts.Infrastructure.UI.Factory;
 using UnityEngine;
 
 namespace Assets.Scripts.Infrastructure.StateMachine.State
 {
     public class BootStrapState : IState
     {
-        private const string _initialScene = "Initial";
-        private const string _gameScene = "GameScene";
+        private const string InitialScene = "InitialScene";
+        private const string GameScene = "GameScene";
         private readonly GameStateMachine _stateMachine;
         private readonly SceneLoader _sceneLoader;
         private readonly AllServices _allServices;
@@ -21,12 +23,12 @@ namespace Assets.Scripts.Infrastructure.StateMachine.State
             _stateMachine = stateMachine;
             _sceneLoader = sceneLoader;
             _allServices = allServices;
+            RegisterServices();
         }
 
         public void Enter()
         {
-            RegisterServices();
-            _sceneLoader.Load(_initialScene, onLoaded: EnterLoadLevel);
+            _sceneLoader.Load(InitialScene, onLoaded: EnterLoadLevel);
         }
 
         public void Exit()
@@ -35,35 +37,40 @@ namespace Assets.Scripts.Infrastructure.StateMachine.State
 
         private void EnterLoadLevel()
         {
-            _stateMachine.Enter<LoadLevelState, string>(_gameScene);
+            _stateMachine.Enter<LoadLevelState, string>(GameScene);
         }
 
         private void RegisterServices()
         {
-            _allServices.RegisterSingle<IInputService>(InputService());
-
+            RegisterInputService();
             RegisterStaticData();
-
-            _allServices.RegisterSingle<IAssetProvider>(new AssetProvider());
-
-            _allServices.RegisterSingle<IPersistentProgressService>(
-                new PersistentProgressService());
-
-
-            _allServices.RegisterSingle<IGameFactory>(
-                new GameFactory(_allServices.Single<IAssetProvider>()
-                    , _allServices.Single<IStaticDataService>()
-                    , _allServices.Single<IPersistentProgressService>()
-                    , _allServices.Single<ITimerEventSystem>()));
-
-
-            //_allServices.RegisterSingle<IUIFactory>(new UIFactory(_allServices.Single<IAssetProvider>()
-            //, _allServices.Single<IStaticDataService>()
-            //, _allServices.Single<IPlayerUpgradeService>()));
-
-            //_allServices.RegisterSingle<IWindowsService>(new WindowsService(_allServices.Single<IUIFactory>()));
-
+            RegisterAssetService();
+            RegisterProgressService();
+            RegisterUiFactory();
+            RegisterWindowsService();
+            RegisterGameFactory();
         }
+
+        private void RegisterGameFactory() =>
+            _allServices.RegisterSingle<IGameFactory>(new GameFactory(_allServices.Single<IAssetService>()
+                , _allServices.Single<IStaticDataService>(), _allServices.Single<IProgressService>()
+                , _allServices.Single<IWindowsService>(), _allServices.Single<IInputService>()));
+
+        private void RegisterWindowsService() =>
+            _allServices.RegisterSingle<IWindowsService>(new WindowsService(_allServices.Single<IUIFactory>()));
+
+        private void RegisterUiFactory() =>
+            _allServices.RegisterSingle<IUIFactory>(new UIFactory(_allServices.Single<IAssetService>()
+                , _allServices.Single<IStaticDataService>(), _allServices.Single<IProgressService>()));
+
+        private void RegisterProgressService() =>
+            _allServices.RegisterSingle<IProgressService>(new ProgressService());
+
+        private void RegisterAssetService() =>
+            _allServices.RegisterSingle<IAssetService>(new AssetService());
+
+        private void RegisterInputService() =>
+            _allServices.RegisterSingle<IInputService>(InputService());
 
         private void RegisterStaticData()
         {

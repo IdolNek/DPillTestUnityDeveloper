@@ -1,6 +1,6 @@
-﻿using Assets.Scripts.Infrastructure.StaticData.EnemyData;
-using Assets.Scripts.Infrastructure.StaticData.LevelData;
-using Infrastructure.StaticData.WindowsData;
+﻿using Assets.Scripts.Infrastructure.GameOption.EnemyData;
+using Assets.Scripts.Infrastructure.GameOption.LevelData;
+using Assets.Scripts.Infrastructure.GameOption.WindowsData;
 
 
 namespace Assets.Scripts.Infrastructure.Services.StaticData

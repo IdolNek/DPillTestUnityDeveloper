@@ -1,18 +1,17 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using Assets.Scripts.Infrastructure.StaticData.EnemyData;
-using Assets.Scripts.Infrastructure.StaticData.LevelData;
-using Assets.Scripts.Infrastructure.StaticData.WindowsData;
-using Infrastructure.StaticData.WindowsData;
+using Assets.Scripts.Infrastructure.GameOption.EnemyData;
+using Assets.Scripts.Infrastructure.GameOption.LevelData;
+using Assets.Scripts.Infrastructure.GameOption.WindowsData;
 using UnityEngine;
 
 namespace Assets.Scripts.Infrastructure.Services.StaticData
 {
     public class StaticDataService : IStaticDataService
     {
-        private const string staticDataEnemies = "StaticData/Enemies";
-        private const string staticDataLevels = "StaticData/Levels";
-        private const string staticDataWindows = "StaticData/Windows/WindowsData";
+        private const string staticDataEnemies = "GameOption/EnemyData";
+        private const string staticDataLevels = "GameOption/LevelData";
+        private const string staticDataWindows = "GameOption/WindowsData/WindowsData";
         private Dictionary<EnemyTypeId, EnemyStaticData> _enemys;
         private Dictionary<string, LevelStaticData> _levels;
         private Dictionary<WindowsId, WindowConfig> _windowConfigs;

@@ -1,5 +1,5 @@
-﻿using Assets.Scripts.Infrastructure.UIFactory;
-using Infrastructure.StaticData.WindowsData;
+﻿using Assets.Scripts.Infrastructure.GameOption.WindowsData;
+using Assets.Scripts.Infrastructure.UI.Factory;
 
 namespace Assets.Scripts.Infrastructure.Services.Windows
 {

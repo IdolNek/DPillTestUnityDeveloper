@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using Assets.Scripts.Infrastructure.GameFactory;
+using Assets.Scripts.Infrastructure.Factory;
 using Assets.Scripts.Infrastructure.Services.ServiceLocater;
 using Assets.Scripts.Infrastructure.Services.StaticData;
 using Assets.Scripts.Infrastructure.StateMachine.State;
-using Assets.Scripts.Infrastructure.UIFactory;
+using Assets.Scripts.Infrastructure.UI.Factory;
 
 namespace Assets.Scripts.Infrastructure.StateMachine
 {

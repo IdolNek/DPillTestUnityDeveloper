@@ -1,4 +1,4 @@
-﻿using Infrastructure.StaticData.WindowsData;
+﻿using Assets.Scripts.Infrastructure.GameOption.WindowsData;
 
 namespace Assets.Scripts.Infrastructure.Services.Windows
 {

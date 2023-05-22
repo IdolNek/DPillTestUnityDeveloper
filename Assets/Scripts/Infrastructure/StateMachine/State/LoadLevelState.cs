@@ -1,8 +1,10 @@
-﻿using Assets.Scripts.CameraLogic;
-using Assets.Scripts.Infrastructure.GameFactory;
+﻿using Assets.Scripts.CameraScripts;
+using Assets.Scripts.Infrastructure.Factory;
+using Assets.Scripts.Infrastructure.GameOption.LevelData;
 using Assets.Scripts.Infrastructure.Services.StaticData;
-using Assets.Scripts.Infrastructure.UIFactory;
+using Assets.Scripts.Infrastructure.UI.Factory;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Assets.Scripts.Infrastructure.StateMachine.State
 {
@@ -36,11 +38,12 @@ namespace Assets.Scripts.Infrastructure.StateMachine.State
 
         private void OnLoaded()
         {
-            //var hero = _gameFactory.CreateHero(GameObject.FindWithTag(_initialPointTag));
-            //_gameFactory.CreateHud();
-            //CameraFollow(hero);
+            LevelStaticData leveldata = _staticDataService.ForLevel(SceneManager.GetActiveScene().name);
+            GameObject hero = _gameFactory.CreateHero(leveldata.InitialHeroPosition);
+            _gameFactory.CreateHud();
+            CameraFollow(hero);
             //InitSpawners();
-            _uiFactory.CreateUIRoot();
+            // _uiFactory.CreateUIRoot();
             _stateMachine.Enter<GameLoopState>();
         }
 
@@ -54,9 +57,7 @@ namespace Assets.Scripts.Infrastructure.StateMachine.State
         //    }
         //}
 
-        private static void CameraFollow(GameObject hero)
-        {
+        private static void CameraFollow(GameObject hero) => 
             Camera.main.GetComponent<CameraFollow>().Follow(hero);
-        }
     }
 }
