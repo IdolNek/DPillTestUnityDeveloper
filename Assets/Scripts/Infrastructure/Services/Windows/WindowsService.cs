@@ -7,10 +7,8 @@ namespace Assets.Scripts.Infrastructure.Services.Windows
     {
         private readonly IUIFactory _uiFactory;
 
-        public WindowsService(IUIFactory uiFactory)
-        {
+        public WindowsService(IUIFactory uiFactory) => 
             _uiFactory = uiFactory;
-        }
 
         public void Open(WindowsId windowsId)
         {
@@ -19,6 +17,7 @@ namespace Assets.Scripts.Infrastructure.Services.Windows
                 case WindowsId.None:
                     break;
                 case WindowsId.GameMenu:
+                    _uiFactory.CreateGameMenuWindow();
                     break;
             }
         }

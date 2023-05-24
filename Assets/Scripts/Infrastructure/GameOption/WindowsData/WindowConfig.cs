@@ -7,6 +7,6 @@ namespace Assets.Scripts.Infrastructure.GameOption.WindowsData
     public class WindowConfig
     {
         public WindowsId WindowsId;
-        public GameObject WindowsPrefab;
+        public GameObject WindowPrefab;
     }
 }

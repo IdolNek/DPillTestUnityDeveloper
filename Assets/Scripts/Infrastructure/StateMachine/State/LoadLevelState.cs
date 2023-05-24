@@ -1,5 +1,6 @@
 ﻿using Assets.Scripts.CameraScripts;
 using Assets.Scripts.Infrastructure.Factory;
+using Assets.Scripts.Infrastructure.GameOption.EnemyData;
 using Assets.Scripts.Infrastructure.GameOption.LevelData;
 using Assets.Scripts.Infrastructure.Services.StaticData;
 using Assets.Scripts.Infrastructure.UI.Factory;
@@ -42,20 +43,16 @@ namespace Assets.Scripts.Infrastructure.StateMachine.State
             GameObject hero = _gameFactory.CreateHero(leveldata.InitialHeroPosition);
             _gameFactory.CreateHud();
             CameraFollow(hero);
-            //InitSpawners();
-            // _uiFactory.CreateUIRoot();
+            InitializeEnemySpawner();
+            _uiFactory.CreateUIRoot();
             _stateMachine.Enter<GameLoopState>();
         }
 
-        //private void InitSpawners()
-        //{
-        //    // string sceneKey = SceneManager.GetActiveScene().name;
-        //    LevelStaticData levelStaticData = _staticDataService.ForLevel(LevelKey.LevelOne);
-        //    foreach (EnemySpawnerData spawnerData in levelStaticData.EnemySpawners)
-        //    {
-        //        _gameFactory.CreateSpawner(spawnerData);
-        //    }
-        //}
+        private void InitializeEnemySpawner()
+        {
+            EnemySpawnStaticData enemySpawnerStaticData = _staticDataService.ForSpawn(EnemyTypeId.Enemy);
+            _gameFactory.CreateSpawner(enemySpawnerStaticData);
+        }
 
         private static void CameraFollow(GameObject hero) => 
             Camera.main.GetComponent<CameraFollow>().Follow(hero);

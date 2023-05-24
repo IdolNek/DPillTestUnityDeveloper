@@ -11,5 +11,6 @@ namespace Assets.Scripts.Infrastructure.Services.StaticData
         EnemyStaticData ForEnemy(EnemyTypeId typeId);
         LevelStaticData ForLevel(string levelKey);
         WindowConfig ForWindow(WindowsId chooseAbility);
+        EnemySpawnStaticData ForSpawn(EnemyTypeId typeId);
     }
 }

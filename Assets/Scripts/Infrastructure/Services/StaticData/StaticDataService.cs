@@ -13,12 +13,15 @@ namespace Assets.Scripts.Infrastructure.Services.StaticData
         private const string staticDataLevels = "GameOption/LevelData";
         private const string staticDataWindows = "GameOption/WindowsData/WindowsData";
         private Dictionary<EnemyTypeId, EnemyStaticData> _enemys;
+        private Dictionary<EnemyTypeId, EnemySpawnStaticData> _enemysSpawns;
         private Dictionary<string, LevelStaticData> _levels;
         private Dictionary<WindowsId, WindowConfig> _windowConfigs;
 
         public void LoadStaticData()
         {
             _enemys = Resources.LoadAll<EnemyStaticData>(staticDataEnemies)
+                .ToDictionary(x => x.EnemyTypeId, x => x);
+            _enemysSpawns = Resources.LoadAll<EnemySpawnStaticData>(staticDataEnemies)
                 .ToDictionary(x => x.EnemyTypeId, x => x);
             _levels = Resources
                 .LoadAll<LevelStaticData>(staticDataLevels)
@@ -31,6 +34,10 @@ namespace Assets.Scripts.Infrastructure.Services.StaticData
 
         public EnemyStaticData ForEnemy(EnemyTypeId typeId) =>
             _enemys.TryGetValue(typeId, out EnemyStaticData staticData)
+                ? staticData
+                : null;
+        public EnemySpawnStaticData ForSpawn(EnemyTypeId typeId) =>
+            _enemysSpawns.TryGetValue(typeId, out EnemySpawnStaticData staticData)
                 ? staticData
                 : null;
 

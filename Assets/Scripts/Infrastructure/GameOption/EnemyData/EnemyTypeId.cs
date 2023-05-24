@@ -2,7 +2,6 @@
 {
     public enum EnemyTypeId
     {
-        ZombieBoy = 0,
-        ZombieMan = 10,
+        Enemy,
     }
 }

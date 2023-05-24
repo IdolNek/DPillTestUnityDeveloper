@@ -61,7 +61,7 @@ namespace Assets.Scripts.Infrastructure.StateMachine.State
 
         private void RegisterUiFactory() =>
             _allServices.RegisterSingle<IUIFactory>(new UIFactory(_allServices.Single<IAssetService>()
-                , _allServices.Single<IStaticDataService>(), _allServices.Single<IProgressService>()));
+                , _allServices.Single<IStaticDataService>(), _stateMachine));
 
         private void RegisterProgressService() =>
             _allServices.RegisterSingle<IProgressService>(new ProgressService());
