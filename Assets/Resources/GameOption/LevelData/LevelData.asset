@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: LevelData
   m_EditorClassIdentifier: 
   _levelKey: GameScene
-  _initialHeroPosition: {x: 0, y: 0.2, z: -8}
+  _initialHeroPosition: {x: 0, y: 0.2, z: -21.86}
   _enemySpawnAreaCenter: {x: 0, y: 1, z: 0}
-  _enemySpawnAreaSize: {x: 8, y: 1, z: 8}
+  _enemySpawnAreaSize: {x: 30, y: 1, z: 38}

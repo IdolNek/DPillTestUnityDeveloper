@@ -4,9 +4,11 @@ using UnityEngine;
 
 namespace Assets.Scripts.SpawnPool
 {
-    public abstract class Pool : MonoBehaviour
+    public abstract class Pool : MonoBehaviour, IPool
     {
         private readonly List<GameObject> _pool = new List<GameObject>();
+
+        public List<GameObject> GameObjPool => _pool;
 
         private protected void AddToPool(GameObject poolItem)
         {

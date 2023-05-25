@@ -1,4 +1,5 @@
-﻿using Assets.Scripts.Infrastructure.Factory;
+﻿using Assets.Scripts.Character.StateMachine;
+using Assets.Scripts.Infrastructure.Factory;
 using Assets.Scripts.Infrastructure.Services.Asset;
 using Assets.Scripts.Infrastructure.Services.Input;
 using Assets.Scripts.Infrastructure.Services.PlayerProgress;
@@ -49,7 +50,11 @@ namespace Assets.Scripts.Infrastructure.StateMachine.State
             RegisterUiFactory();
             RegisterWindowsService();
             RegisterGameFactory();
+            RegisterCharacterStateMachine();
         }
+
+        private void RegisterCharacterStateMachine() => 
+            _allServices.RegisterSingle<IStateMachineBase>(new CharacterStateMachine(_allServices.Single<IGameFactory>()));
 
         private void RegisterGameFactory() =>
             _allServices.RegisterSingle<IGameFactory>(new GameFactory(_allServices.Single<IAssetService>()

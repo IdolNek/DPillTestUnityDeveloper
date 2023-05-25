@@ -1,4 +1,5 @@
 ﻿using Assets.Scripts.CameraScripts;
+using Assets.Scripts.Character.StateMachine.State;
 using Assets.Scripts.Infrastructure.Factory;
 using Assets.Scripts.Infrastructure.GameOption.EnemyData;
 using Assets.Scripts.Infrastructure.GameOption.LevelData;
@@ -16,16 +17,18 @@ namespace Assets.Scripts.Infrastructure.StateMachine.State
         private readonly IGameFactory _gameFactory;
         private readonly IStaticDataService _staticDataService;
         private readonly IUIFactory _uiFactory;
+        private readonly IStateMachineBase _characterStateMachine;
 
         public LoadLevelState(GameStateMachine stateMachine, SceneLoader sceneLoader
             , IGameFactory gameFactory, IStaticDataService staticDataService
-            , IUIFactory uiFactory)
+            , IUIFactory uiFactory, IStateMachineBase characterStateMachine)
         {
             _stateMachine = stateMachine;
             _sceneLoader = sceneLoader;
             _gameFactory = gameFactory;
             _staticDataService = staticDataService;
             _uiFactory = uiFactory;
+            _characterStateMachine = characterStateMachine;
         }
 
         public void Enter(string sceneName)
@@ -45,9 +48,9 @@ namespace Assets.Scripts.Infrastructure.StateMachine.State
             CameraFollow(hero);
             InitializeEnemySpawner();
             _uiFactory.CreateUIRoot();
+            _characterStateMachine.Enter<PlayerInBaseArea>();
             _stateMachine.Enter<GameLoopState>();
         }
-
         private void InitializeEnemySpawner()
         {
             EnemySpawnStaticData enemySpawnerStaticData = _staticDataService.ForSpawn(EnemyTypeId.Enemy);

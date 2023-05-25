@@ -6,6 +6,7 @@ namespace Assets.Scripts.Character.Enemy
     public class MoveEnemy : MonoBehaviour
     {
         [SerializeField] private NavMeshAgent _meshAgent;
+        [SerializeField] private GenerateRandomPointInAttackArea _randomPointInAttackArea;
         private Transform _playerTransform;
         private Vector3 _targetPosition;
         public void Construct(Transform playerTransform) => 
@@ -16,10 +17,11 @@ namespace Assets.Scripts.Character.Enemy
             if (_playerTransform == null) return;
             _meshAgent.destination = _targetPosition;
         }
-        public void SetTarget() => 
+        public void SetTargetToPlayer() => 
             _targetPosition = _playerTransform.position;
-        public void SetTarget(Vector3 targetPosition) => 
-            _targetPosition = targetPosition;
-
+        public void SetRandomPosition()
+        {
+            _targetPosition = _randomPointInAttackArea.GetRandomPointInAttackArea();
+        }
     }
 }

@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 845202907579464692}
   - component: {fileID: 5742931852763393667}
   - component: {fileID: 3842489068409672655}
+  - component: {fileID: 8373692581475039130}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -72,6 +73,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _meshAgent: {fileID: 7566607523190189574}
+  _randomPointInAttackArea: {fileID: 8373692581475039130}
 --- !u!114 &5742931852763393667
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -98,6 +100,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _healthBar: {fileID: 7025169622107101735}
   _health: {fileID: 5742931852763393667}
+--- !u!114 &8373692581475039130
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2614242618169837365}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8634506b2b9e88044aed85297b568b77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &868917459009187990
 PrefabInstance:
   m_ObjectHideFlags: 0

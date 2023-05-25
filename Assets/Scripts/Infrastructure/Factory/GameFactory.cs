@@ -25,6 +25,10 @@ namespace Assets.Scripts.Infrastructure.Factory
         private readonly IInputService _inputService;
 
         private GameObject _player;
+        private EnemySpawner _spawner;
+
+        public GameObject Player => _player;
+        public EnemySpawner Spawner => _spawner;
 
         public GameFactory(IAssetService asset, IStaticDataService staticData,
             IProgressService progress, IWindowsService windowsService, IInputService inputService)
@@ -53,20 +57,22 @@ namespace Assets.Scripts.Infrastructure.Factory
 
         public void CreateSpawner(EnemySpawnStaticData enemySpawnerStaticData)
         {
-            EnemySpawner spawner = Object.Instantiate(enemySpawnerStaticData.SpawnPrefab).GetComponent<EnemySpawner>();
-            spawner.Construct(this, enemySpawnerStaticData);
-            string sceneKey = SceneManager.GetActiveScene().name;
-            LevelStaticData levelData = _staticData.ForLevel(sceneKey);
-            spawner.InitializeSpawnArea(levelData.EnemySpawnAreaCenter, levelData.EnemySpawnAreaSize);
+            _spawner = Object.Instantiate(enemySpawnerStaticData.SpawnPrefab).GetComponent<EnemySpawner>();
+            _spawner.Construct(this, enemySpawnerStaticData);
+            _spawner.Initialize();
 
         }
 
         public GameObject CreateEnemy(EnemyTypeId enemyTypeId)
         {
             EnemyStaticData enemydata = _staticData.ForEnemy(enemyTypeId);
+            string sceneKey = SceneManager.GetActiveScene().name;
+            LevelStaticData levelData = _staticData.ForLevel(sceneKey);
             GameObject enemy = Object.Instantiate(enemydata.EnemyPrefab);
             enemy.GetComponent<MoveEnemy>().Construct(_player.transform);
             enemy.GetComponent<Health>().Construct(enemydata.Hp);
+            enemy.GetComponent<GenerateRandomPointInAttackArea>().Construct(levelData.EnemySpawnAreaCenter
+                , levelData.EnemySpawnAreaSize);
             return enemy;
         }
     }
