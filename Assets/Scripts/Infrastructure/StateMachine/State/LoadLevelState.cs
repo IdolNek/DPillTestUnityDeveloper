@@ -1,4 +1,5 @@
 ﻿using Assets.Scripts.CameraScripts;
+using Assets.Scripts.Character.StateMachine;
 using Assets.Scripts.Character.StateMachine.State;
 using Assets.Scripts.Infrastructure.Factory;
 using Assets.Scripts.Infrastructure.GameOption.EnemyData;
@@ -44,6 +45,8 @@ namespace Assets.Scripts.Infrastructure.StateMachine.State
         {
             LevelStaticData leveldata = _staticDataService.ForLevel(SceneManager.GetActiveScene().name);
             GameObject hero = _gameFactory.CreateHero(leveldata.InitialHeroPosition);
+            GameObject basetrigger = _gameFactory.CreatePlayerBaseTrigger(leveldata.PlayerBaseCenter, leveldata.PlayerBaseSize);
+            basetrigger.GetComponent<ChangeStateTrigger>().Construct(_characterStateMachine);
             _gameFactory.CreateHud();
             CameraFollow(hero);
             InitializeEnemySpawner();

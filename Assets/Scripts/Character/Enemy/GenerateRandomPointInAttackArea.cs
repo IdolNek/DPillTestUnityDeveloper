@@ -7,7 +7,7 @@ namespace Assets.Scripts.Character.Enemy
         private Vector3 _centerAreaSpawn;
         private Vector3 _sizeAreaSpawn;
 
-        public void Construct(Vector3 centerAreaSpawn, Vector3 sizeAreaSpawn)
+        public void Initialize(Vector3 centerAreaSpawn, Vector3 sizeAreaSpawn)
         {
             _centerAreaSpawn = centerAreaSpawn;
             _sizeAreaSpawn = sizeAreaSpawn;

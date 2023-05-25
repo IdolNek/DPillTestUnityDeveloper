@@ -21,6 +21,8 @@ namespace Assets.Scripts.Editor
                 levelData.SetInitialPlayerPosition(FindObjectOfType<PlayerSpawnMarker>().gameObject.transform.position);
                 Transform enemySpawnAreaTransform = FindObjectOfType<EnemySpawnArea>().gameObject.transform;
                 levelData.SetEnemySpawnArea(enemySpawnAreaTransform.position, enemySpawnAreaTransform.localScale);
+                Transform playerBaseArea = FindObjectOfType<PlayerBaseArea>().gameObject.transform;
+                levelData.SetPlayerBaseArea(playerBaseArea.position, playerBaseArea.localScale);
             }
             EditorUtility.SetDirty(target);
         }

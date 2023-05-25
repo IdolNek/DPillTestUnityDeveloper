@@ -14,5 +14,6 @@ namespace Assets.Scripts.Infrastructure.Factory
         GameObject CreateHero(Vector3 at);
         GameObject CreateHud();
         void CreateSpawner(EnemySpawnStaticData enemySpawnerStaticData);
+        GameObject CreatePlayerBaseTrigger(Vector3 playerBaseCenter, Vector3 playerBaseSize);
     }
 }

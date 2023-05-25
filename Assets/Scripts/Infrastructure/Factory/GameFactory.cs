@@ -1,6 +1,7 @@
 ﻿using Assets.Scripts.Character;
 using Assets.Scripts.Character.Enemy;
 using Assets.Scripts.Character.Player;
+using Assets.Scripts.Character.StateMachine;
 using Assets.Scripts.Infrastructure.GameOption.EnemyData;
 using Assets.Scripts.Infrastructure.GameOption.LevelData;
 using Assets.Scripts.Infrastructure.Services.Asset;
@@ -11,6 +12,7 @@ using Assets.Scripts.Infrastructure.Services.Windows;
 using Assets.Scripts.SpawnPool;
 using Assets.Scripts.UI;
 using UnityEngine;
+using UnityEngine.AI;
 using UnityEngine.SceneManagement;
 
 namespace Assets.Scripts.Infrastructure.Factory
@@ -70,10 +72,20 @@ namespace Assets.Scripts.Infrastructure.Factory
             LevelStaticData levelData = _staticData.ForLevel(sceneKey);
             GameObject enemy = Object.Instantiate(enemydata.EnemyPrefab);
             enemy.GetComponent<MoveEnemy>().Construct(_player.transform);
-            enemy.GetComponent<Health>().Construct(enemydata.Hp);
-            enemy.GetComponent<GenerateRandomPointInAttackArea>().Construct(levelData.EnemySpawnAreaCenter
+            enemy.GetComponent<Health>().Initialize(enemydata.Hp);
+            enemy.GetComponent<Attack>().Initialize(enemydata.Damage, enemydata.AttackCountDown);
+            enemy.GetComponentInChildren<EnemyTrigger>().Initialize(enemydata.AttackRange);
+            enemy.GetComponent<NavMeshAgent>().speed = enemydata.MoveSpeed;
+            enemy.GetComponent<GenerateRandomPointInAttackArea>().Initialize(levelData.EnemySpawnAreaCenter
                 , levelData.EnemySpawnAreaSize);
             return enemy;
+        }
+
+        public GameObject CreatePlayerBaseTrigger(Vector3 playerBaseCenter, Vector3 playerBaseSize)
+        {
+            GameObject basetrigger = _asset.Instantiate(AssetPath.BaseTrigger, playerBaseCenter);
+            basetrigger.GetComponent<BoxCollider>().size = playerBaseSize;
+            return basetrigger;
         }
     }
 }

@@ -6,5 +6,6 @@
         public const string HUDPath = "HUD/HUD";
         public const string Spawner = "Enemies/SpawnerPoint";
         public const string UIRootPath = "UI/UIRoot";
+        public const string BaseTrigger = "InfrastructurePrefab/BaseTrigger";
     }
 }

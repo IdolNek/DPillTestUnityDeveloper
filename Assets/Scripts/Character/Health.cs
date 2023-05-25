@@ -9,7 +9,7 @@ namespace Assets.Scripts.Character
         private float _currentHealth;
 
         public event Action<float, float> OnHealthChanged;
-        public void Construct(float health)
+        public void Initialize(float health)
         {
             _maxHealth = health;
             Initializ();
