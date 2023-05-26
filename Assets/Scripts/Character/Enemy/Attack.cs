@@ -8,7 +8,7 @@ namespace Assets.Scripts.Character.Enemy
         private float _damage;
         private float _attackCountDown;
         private float _currentAttackCountDown;
-        public void Initialize(int damage, float attackCountDown)
+        public void Initialize(float damage, float attackCountDown)
         {
             _damage = damage;
             _attackCountDown = attackCountDown;

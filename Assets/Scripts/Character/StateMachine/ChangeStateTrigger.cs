@@ -11,7 +11,7 @@ namespace Assets.Scripts.Character.StateMachine
 
         public void Construct(IStateMachineBase characterStateMachine) => 
             _characterStateMachine = characterStateMachine;
-        private void OnTriggerEnter(Collider other)
+        private void OnTriggerStay(Collider other)
         {
             if (_isPlayerInBase) return;
             _isPlayerInBase = true;

@@ -6,10 +6,13 @@ namespace Assets.Scripts.Character.CharacterUI
     {
         [SerializeField] private HealthBar _healthBar;
         [SerializeField] private Health _health;
-        private void Start() => 
+
+        private void OnEnable() => 
             _health.OnHealthChanged += OnHealthChanged;
 
         private void OnHealthChanged(float currentHP, float maxHP) => 
             _healthBar.SetValue(currentHP, maxHP);
+        private void OnDisable() => 
+            _health.OnHealthChanged -= OnHealthChanged;
     }
 }

@@ -7,7 +7,9 @@ namespace Assets.Scripts.Character.CharacterUI
     {
         [SerializeField] private Image _image;
 
-        public void SetValue(float currentHP, float maxHP) =>
+        public void SetValue(float currentHP, float maxHP)
+        {
             _image.fillAmount = currentHP / maxHP;
+        }
     }
 }
