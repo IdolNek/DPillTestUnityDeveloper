@@ -7,17 +7,20 @@ namespace Assets.Scripts.Character.Player
     {
 
         [SerializeField] private CharacterController _characterController;
-        [SerializeField] private float _movementSpeed;
         [SerializeField] private float _turnSpeed;
 
         private IInputService _inputService;
         private Camera _camera;
+
         private float _rotateAngle;
+        private float _moveSpeed;
 
         private const float epsilon = 0.001f;
 
         public void Construct(IInputService inputService) =>
             _inputService = inputService;
+        public void Initialize(float moveSpeed) => 
+            _moveSpeed = moveSpeed;
 
         void Start()
         {
@@ -42,7 +45,7 @@ namespace Assets.Scripts.Character.Player
 
             movementVector += Physics.gravity;
 
-            _characterController.Move(_movementSpeed * movementVector * Time.deltaTime);
+            _characterController.Move(_moveSpeed * movementVector * Time.deltaTime);
 
         }
     }

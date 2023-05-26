@@ -1,6 +1,4 @@
 ﻿using Assets.Scripts.Character.Player;
-using System;
-using System.Collections;
 using UnityEngine;
 
 namespace Assets.Scripts.Character.Enemy

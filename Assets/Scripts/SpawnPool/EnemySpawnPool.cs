@@ -24,8 +24,8 @@ namespace Assets.Scripts.SpawnPool
         {
             for (int i = 0; i < _poolCount; i++)
             {
-                GameObject spawned = _gameFactory.CreateEnemy(_enemyTypeId);
-                AddToPool(spawned);
+                GameObject enemy = _gameFactory.CreateEnemy(_enemyTypeId);
+                AddToPool(enemy);
             }
         }
     }

@@ -8,14 +8,13 @@ namespace Assets.Scripts.Character
         private float _maxHealth;
         private float _currentHealth;
 
-        public event Action<float, float> OnHealthChanged;
-        public void Initialize(float health)
-        {
-            _maxHealth = health;
-            Initializ();
-        }
+        public float CurrentHealth => _currentHealth;
 
-        private void Initializ()
+        public event Action<float, float> OnHealthChanged;
+        public void Initialize(float health) => 
+            _maxHealth = health;
+
+        public void ResetHP()
         {
             _currentHealth = _maxHealth;
             OnHealthChanged?.Invoke(_currentHealth, _maxHealth);

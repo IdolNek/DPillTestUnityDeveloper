@@ -2,6 +2,7 @@
 using System.Linq;
 using Assets.Scripts.Infrastructure.GameOption.EnemyData;
 using Assets.Scripts.Infrastructure.GameOption.LevelData;
+using Assets.Scripts.Infrastructure.GameOption.Player;
 using Assets.Scripts.Infrastructure.GameOption.WindowsData;
 using UnityEngine;
 
@@ -12,10 +13,14 @@ namespace Assets.Scripts.Infrastructure.Services.StaticData
         private const string staticDataEnemies = "GameOption/EnemyData";
         private const string staticDataLevels = "GameOption/LevelData";
         private const string staticDataWindows = "GameOption/WindowsData/WindowsData";
+        private const string staticDataPlayer = "GameOption/PlayerData/PlayerData";
         private Dictionary<EnemyTypeId, EnemyStaticData> _enemys;
         private Dictionary<EnemyTypeId, EnemySpawnStaticData> _enemysSpawns;
         private Dictionary<string, LevelStaticData> _levels;
         private Dictionary<WindowsId, WindowConfig> _windowConfigs;
+        private PlayerStaticData _playerConfig;
+
+        public PlayerStaticData PlayerConfig => _playerConfig; 
 
         public void LoadStaticData()
         {
@@ -30,6 +35,7 @@ namespace Assets.Scripts.Infrastructure.Services.StaticData
                 .Load<WindowsStaticData>(staticDataWindows)
                 .Configs
                 .ToDictionary(x => x.WindowsId, x => x);
+            _playerConfig = Resources.Load<PlayerStaticData>(staticDataPlayer);
         }
 
         public EnemyStaticData ForEnemy(EnemyTypeId typeId) =>

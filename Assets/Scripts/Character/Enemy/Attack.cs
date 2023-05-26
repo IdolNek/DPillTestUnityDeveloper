@@ -1,11 +1,10 @@
-﻿using Assets.Scripts.Character.Player;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Assets.Scripts.Character.Enemy
 {
     public class Attack : MonoBehaviour
     {
-        [SerializeField] private EnemyAnimator _enemyAnimator;
+        [SerializeField] private AnimatorBase _animator;
         private float _damage;
         private float _attackCountDown;
         private float _currentAttackCountDown;
@@ -19,11 +18,11 @@ namespace Assets.Scripts.Character.Enemy
             _currentAttackCountDown += Time.deltaTime;
         }
 
-        public void DoDamage(PlayerHealth player)
+        public void DoDamage(Health character)
         {
             if (_currentAttackCountDown < _attackCountDown) return;
-            player.TakeDamage(_damage);
-            _enemyAnimator.Attack();
+            character.TakeDamage(_damage);
+            _animator.Attack();
             _currentAttackCountDown = 0;
         }
     }
