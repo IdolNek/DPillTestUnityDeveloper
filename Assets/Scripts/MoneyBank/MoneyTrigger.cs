@@ -5,11 +5,14 @@ namespace Assets.Scripts.MoneyBank
 {
     public class MoneyTrigger : MonoBehaviour
     {
+        private bool _isCollect = false;
         private void OnTriggerEnter(Collider other)
         {
+            if (_isCollect) return;
             if (other.TryGetComponent<MoneyCollector>(out MoneyCollector collector))
             {
-                collector.AddMoneyBank(other.gameObject);
+                _isCollect = true;
+                collector.AddMoneyBank(gameObject);
             }
         }
     }

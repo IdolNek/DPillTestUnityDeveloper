@@ -5,6 +5,7 @@ namespace Assets.Scripts.SpawnPool
 {
     public class EnemySpawner : EnemySpawnPool
     {
+        [SerializeField]
         private int _countEnemyToSpawn;
         private float _timeBetweenSpawn;
         private float _currentTimeBetweenSpawn;
@@ -29,6 +30,7 @@ namespace Assets.Scripts.SpawnPool
             {
                 SpawnEnemy();
             }
+            _currentTimeBetweenSpawn = 0;
         }
 
         private void SpawnEnemy()

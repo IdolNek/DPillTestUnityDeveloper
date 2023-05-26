@@ -172,9 +172,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _meshAgent: {fileID: 7566607523190189574}
   _randomPointInAttackArea: {fileID: 8373692581475039130}
-  _playerTransform: {fileID: 0}
-  _targetPosition: {x: 0, y: 0, z: 0}
-  _isPlayerTarget: 0
 --- !u!114 &3842489068409672655
 MonoBehaviour:
   m_ObjectHideFlags: 0

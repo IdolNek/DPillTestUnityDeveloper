@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: EnemyData
   m_EditorClassIdentifier: 
   EnemyTypeId: 0
-  Hp: 5
+  Hp: 9
   Damage: 1
   MoveSpeed: 5
   AttackRange: 1
   AttackCountDown: 1
-  LootCount: 1
+  MoneyCount: 0
   EnemyPrefab: {fileID: 2614242618169837365, guid: 14470fd151bcc4742b90348391998ddb, type: 3}

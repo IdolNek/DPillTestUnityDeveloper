@@ -9,17 +9,23 @@ namespace Assets.Scripts.Character.Player
     {
         [SerializeField] private Transform _itemParentPoint;
         [SerializeField] private float _moneyOffset;
+        [SerializeField]
         private List<GameObject> _moneyBank = new List<GameObject>();
         private IProgressService _progressService;
 
-        public void Construct(IProgressService progressService) => 
+        public void Construct(IProgressService progressService) =>
             _progressService = progressService;
         public void AddMoneyBank(GameObject money)
         {
             _moneyBank.Add(money);
             money.transform.SetParent(_itemParentPoint);
-            money.transform.position = Vector3.zero;
-            money.transform.position = Vector3.up * _moneyOffset * (_moneyBank.Count - 1);
+            for (int i = 0; i < _moneyBank.Count; i++)
+            {
+                GameObject item = _moneyBank[i];
+                item.transform.localPosition = Vector3.zero;
+                item.transform.localEulerAngles = new Vector3(0, 90, 0);
+                item.transform.localPosition = Vector3.up * _moneyOffset * i;
+            }
         }
 
         public void RemoveAllMoney()
@@ -27,8 +33,12 @@ namespace Assets.Scripts.Character.Player
             foreach (GameObject money in _moneyBank)
             {
                 _progressService.Money.Collect(money.GetComponent<Money>().Count);
-                Destroy(money);
             }
+            foreach (var item in _moneyBank)
+            {
+                Destroy(item);
+            }
+            _moneyBank = new List<GameObject>();
         }
     }
 

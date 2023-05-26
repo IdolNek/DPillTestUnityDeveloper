@@ -24,7 +24,7 @@ namespace Assets.Scripts.Infrastructure.Factory
         private readonly IAssetService _asset;
         private readonly IStaticDataService _staticData;
         private readonly IProgressService _progress;
-        private readonly IWindowsService _windowService;
+        private readonly IWindowsService _windowsService;
         private readonly IInputService _inputService;
 
         private GameObject _player;
@@ -39,7 +39,7 @@ namespace Assets.Scripts.Infrastructure.Factory
             _asset = asset;
             _staticData = staticData;
             _progress = progress;
-            _windowService = windowsService;
+            _windowsService = windowsService;
             _inputService = inputService;
         }
 
@@ -51,6 +51,8 @@ namespace Assets.Scripts.Infrastructure.Factory
             movePlayer.Construct(_inputService);
             movePlayer.Initialize(playerData.MoveSpeed);
             _player.GetComponent<PlayerHealth>().Initialize(playerData.Hp);
+            _player.GetComponent<MoneyCollector>().Construct(_progress);
+            _player.GetComponent<PlayerDeath>().Construct(_windowsService);
             _player.GetComponentInChildren<BulletSpawner>().Construct(this);
             _player.GetComponentInChildren<PlayerWeapon>().Initialize(playerData.AttackCountDown);
             _player.GetComponentInChildren<PlayerAttackTrigger>().Initialize(playerData.AttackRange);
@@ -61,7 +63,7 @@ namespace Assets.Scripts.Infrastructure.Factory
         {
             GameObject hud = _asset.Instantiate(AssetPath.HUDPath);
             hud.GetComponentInChildren<MoneyCounter>().Construct(_progress.Money);
-            hud.GetComponentInChildren<OpenGameMenu>().Construct(_windowService);
+            hud.GetComponentInChildren<OpenGameMenu>().Construct(_windowsService);
             return hud;
         }
 

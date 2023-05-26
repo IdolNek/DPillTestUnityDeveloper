@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: PlayerData
   m_EditorClassIdentifier: 
   Hp: 10
-  Damage: 2
+  Damage: 5
   MoveSpeed: 5
   AttackRange: 10
   AttackCountDown: 2

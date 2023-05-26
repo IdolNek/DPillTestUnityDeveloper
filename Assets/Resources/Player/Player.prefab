@@ -87,6 +87,7 @@ GameObject:
   - component: {fileID: 7483427698274715680}
   - component: {fileID: 1192001516860650611}
   - component: {fileID: 7673184783290515848}
+  - component: {fileID: -2937303689137318473}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -110,6 +111,7 @@ Transform:
   - {fileID: 8993037785416106271}
   - {fileID: 6452901198747928869}
   - {fileID: 5379487139841391397}
+  - {fileID: 4159111842865406788}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -125,7 +127,7 @@ CharacterController:
   m_Enabled: 1
   serializedVersion: 2
   m_Height: 2
-  m_Radius: 0.5
+  m_Radius: 0.1
   m_SlopeLimit: 45
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
@@ -201,6 +203,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _weapon: {fileID: 516846206199270785}
+--- !u!114 &-2937303689137318473
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2614242618169837365}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9728053012a6ad940be7fc3d957b3250, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _itemParentPoint: {fileID: 4159111842865406788}
+  _moneyOffset: 0.1
 --- !u!1 &3881398727263840443
 GameObject:
   m_ObjectHideFlags: 0
@@ -261,6 +277,37 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &4863782774725459792
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4159111842865406788}
+  m_Layer: 0
+  m_Name: MoneyCollector
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4159111842865406788
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4863782774725459792}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.59, z: -0.307}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2614242618169837370}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2362980628291333963
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -381,7 +428,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 736367769863473711, guid: 399bf295eab73e944964feba6b1ab29f, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 0.593
       objectReference: {fileID: 0}
     - target: {fileID: 736367769863473711, guid: 399bf295eab73e944964feba6b1ab29f, type: 3}
       propertyPath: m_LocalRotation.w
@@ -389,15 +436,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 736367769863473711, guid: 399bf295eab73e944964feba6b1ab29f, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 736367769863473711, guid: 399bf295eab73e944964feba6b1ab29f, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 736367769863473711, guid: 399bf295eab73e944964feba6b1ab29f, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 736367769863473711, guid: 399bf295eab73e944964feba6b1ab29f, type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -405,7 +452,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 736367769863473711, guid: 399bf295eab73e944964feba6b1ab29f, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 2
+      value: 2.127
       objectReference: {fileID: 0}
     - target: {fileID: 736367769863473711, guid: 399bf295eab73e944964feba6b1ab29f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
