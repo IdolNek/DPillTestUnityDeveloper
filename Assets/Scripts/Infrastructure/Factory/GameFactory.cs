@@ -53,7 +53,7 @@ namespace Assets.Scripts.Infrastructure.Factory
             _player.GetComponent<PlayerHealth>().Initialize(playerData.Hp);
             _player.GetComponentInChildren<BulletSpawner>().Construct(this);
             _player.GetComponentInChildren<PlayerWeapon>().Initialize(playerData.AttackCountDown);
-            _player.GetComponentInChildren<PlayerTrigger>().Initialize(playerData.AttackRange);
+            _player.GetComponentInChildren<PlayerAttackTrigger>().Initialize(playerData.AttackRange);
             return _player;
         }
 
@@ -82,6 +82,9 @@ namespace Assets.Scripts.Infrastructure.Factory
             enemy.GetComponent<MoveEnemy>().Construct(_player.transform);
             enemy.GetComponent<Health>().Initialize(enemydata.Hp);
             enemy.GetComponent<Attack>().Initialize(enemydata.Damage, enemydata.AttackCountDown);
+            MoneySpawn moneySpawn = enemy.GetComponent<MoneySpawn>();
+            moneySpawn.Initialize(enemydata.MoneyCount);
+            moneySpawn.Construct(this);
             enemy.GetComponentInChildren<EnemyTrigger>().Initialize(enemydata.AttackRange);
             enemy.GetComponent<NavMeshAgent>().speed = enemydata.MoveSpeed;
             enemy.GetComponent<GenerateRandomPointInAttackArea>().Initialize(levelData.EnemySpawnAreaCenter
@@ -102,6 +105,12 @@ namespace Assets.Scripts.Infrastructure.Factory
             GameObject bullet = Object.Instantiate(playerData.BulletPrefab);
             bullet.GetComponent<Bullet>().Initialize(playerData.Damage);
             return bullet;
+        }
+
+        public GameObject CreateMoney(Vector3 position)
+        {
+            var money = _asset.Instantiate(AssetPath.Money, position);
+            return money;
         }
     }
 }

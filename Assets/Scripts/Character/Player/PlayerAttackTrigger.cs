@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Assets.Scripts.Character.Player
 {
-    public class PlayerTrigger : MonoBehaviour
+    public class PlayerAttackTrigger : MonoBehaviour
     {
 
         [SerializeField] private SphereCollider _sphereCollider;

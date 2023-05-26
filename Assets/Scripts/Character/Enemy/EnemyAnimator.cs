@@ -6,9 +6,10 @@ namespace Assets.Scripts.Character.Enemy
     public class EnemyAnimator : AnimatorBase
     {
         [SerializeField] private NavMeshAgent _agent;
+        [SerializeField] private float magnitude;
         protected override void Update()
         {
-            float magnitude = _agent.velocity.magnitude;
+            magnitude = _agent.velocity.magnitude;
             if(magnitude > 1 ) _animator.SetFloat(_move, magnitude);
             else _animator.SetFloat(_move, 0f);
 

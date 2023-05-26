@@ -17,4 +17,4 @@ MonoBehaviour:
   _center: {x: 0, y: 1, z: 0}
   _size: {x: 30, y: 1, z: 38}
   _centerArea: {x: 0, y: 0, z: -22}
-  _sizeArea: {x: 40, y: 1, z: 4}
+  _sizeArea: {x: 45, y: 1, z: 5}

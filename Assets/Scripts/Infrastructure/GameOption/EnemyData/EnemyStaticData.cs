@@ -17,7 +17,7 @@ namespace Assets.Scripts.Infrastructure.GameOption.EnemyData
         [Range(0.1f, 5)]
         public float AttackCountDown;
 
-        public int LootCount;
+        public int MoneyCount;
 
         public GameObject EnemyPrefab;
     }

@@ -13,8 +13,7 @@ namespace Assets.Scripts.Character.Enemy
             _health.OnHealthChanged += OnHealthChanged;
         private void OnHealthChanged(float hP, float maxHP)
         {
-            if (hP <= 0)
-                Die();
+            if (hP <= 0) Die();
         }
 
         private void Die()

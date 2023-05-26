@@ -1,4 +1,4 @@
-﻿using PlayerProgress;
+﻿using Assets.Scripts.MoneyBank;
 
 namespace Assets.Scripts.Infrastructure.Services.PlayerProgress
 {

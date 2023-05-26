@@ -16,5 +16,6 @@ namespace Assets.Scripts.Infrastructure.Factory
         void CreateSpawner(EnemySpawnStaticData enemySpawnerStaticData);
         GameObject CreatePlayerBaseTrigger(Vector3 playerBaseCenter, Vector3 playerBaseSize);
         GameObject CreateBullet();
+        GameObject CreateMoney(Vector3 position);
     }
 }

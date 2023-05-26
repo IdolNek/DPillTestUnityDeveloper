@@ -25,12 +25,14 @@ namespace Assets.Scripts.Character.Player.Weapon
             yield return new WaitForSeconds(_timeToDestroy);
             gameObject.SetActive(false);
         }
-
+        
         private void OnCollisionEnter(Collision collision)
         {
             if (collision.gameObject.TryGetComponent<EnemyHealth>(out EnemyHealth enemyHealth))
+            {
                 enemyHealth.TakeDamage(_damage);
-            gameObject.SetActive(false);
+                gameObject.SetActive(false);
+            }
         }
     }
 }

@@ -80,6 +80,7 @@ GameObject:
   - component: {fileID: 6510630492281708872}
   - component: {fileID: 7793036767418325460}
   - component: {fileID: 4476742501431906440}
+  - component: {fileID: 8600925238569185500}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -119,7 +120,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 126
   m_CollisionDetection: 0
 --- !u!136 &6710338977301407113
 CapsuleCollider:
@@ -171,6 +172,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _meshAgent: {fileID: 7566607523190189574}
   _randomPointInAttackArea: {fileID: 8373692581475039130}
+  _playerTransform: {fileID: 0}
+  _targetPosition: {x: 0, y: 0, z: 0}
+  _isPlayerTarget: 0
 --- !u!114 &3842489068409672655
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -212,6 +216,7 @@ MonoBehaviour:
   _animator: {fileID: 2614242616269703623}
   _health: {fileID: 6510630492281708872}
   _agent: {fileID: 7566607523190189574}
+  magnitude: 0
 --- !u!114 &1499403239673577083
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -237,6 +242,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e893069e3eab68f49bbbd58458189c43, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _maxHealth: 0
+  _currentHealth: 0
 --- !u!114 &7793036767418325460
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -264,6 +271,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _health: {fileID: 6510630492281708872}
+--- !u!114 &8600925238569185500
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2614242618169837365}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc23a698d83cc8f46b543e59e03e25c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _death: {fileID: 4476742501431906440}
 --- !u!1001 &868917459009187990
 PrefabInstance:
   m_ObjectHideFlags: 0

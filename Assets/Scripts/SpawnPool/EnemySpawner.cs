@@ -36,8 +36,8 @@ namespace Assets.Scripts.SpawnPool
             if (TryGetObject(out GameObject enemy))
             {
                 enemy.transform.position = enemy.GetComponent<GenerateRandomPointInAttackArea>().GetRandomPointInAttackArea();
-                enemy.GetComponent<EnemyHealth>().ResetHP();
                 enemy.SetActive(true);
+                enemy.GetComponent<EnemyHealth>().ResetHP();
             }
         }
     }

@@ -1,4 +1,4 @@
-﻿using PlayerProgress;
+﻿using Assets.Scripts.MoneyBank;
 using TMPro;
 using UnityEngine;
 
