@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: EnemySpawnerData
   m_EditorClassIdentifier: 
   EnemyTypeId: 0
-  MaxEnemyCount: 5
-  EnemyInOneWave: 5
+  MaxEnemyCount: 15
+  EnemyInOneWave: 3
   TimeBetweenSpawn: 10
   SpawnPrefab: {fileID: 3099682564411664246, guid: 1169043c9d0ccb64591f95db175db87f, type: 3}

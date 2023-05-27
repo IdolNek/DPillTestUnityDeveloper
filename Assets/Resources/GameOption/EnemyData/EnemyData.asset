@@ -18,5 +18,5 @@ MonoBehaviour:
   MoveSpeed: 5
   AttackRange: 1
   AttackCountDown: 1
-  MoneyCount: 0
+  MoneyCount: 1
   EnemyPrefab: {fileID: 2614242618169837365, guid: 14470fd151bcc4742b90348391998ddb, type: 3}

@@ -17,5 +17,6 @@ namespace Assets.Scripts.Infrastructure.Factory
         GameObject CreatePlayerBaseTrigger(Vector3 playerBaseCenter, Vector3 playerBaseSize);
         GameObject CreateBullet();
         GameObject CreateMoney(Vector3 position);
+        void ResetPlayer();
     }
 }

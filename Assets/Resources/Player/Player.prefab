@@ -88,6 +88,7 @@ GameObject:
   - component: {fileID: 1192001516860650611}
   - component: {fileID: 7673184783290515848}
   - component: {fileID: -2937303689137318473}
+  - component: {fileID: 8894976624824836773}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -216,7 +217,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _itemParentPoint: {fileID: 4159111842865406788}
-  _moneyOffset: 0.1
+  _moneyOffset: 0.2
+  _moneyBank: []
+--- !u!114 &8894976624824836773
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2614242618169837365}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7f9adb5ab65d854b93d2455cab09048, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _playerHealth: {fileID: 1192001516860650611}
 --- !u!1 &3881398727263840443
 GameObject:
   m_ObjectHideFlags: 0

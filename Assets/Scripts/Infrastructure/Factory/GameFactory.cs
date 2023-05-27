@@ -10,6 +10,7 @@ using Assets.Scripts.Infrastructure.Services.Input;
 using Assets.Scripts.Infrastructure.Services.PlayerProgress;
 using Assets.Scripts.Infrastructure.Services.StaticData;
 using Assets.Scripts.Infrastructure.Services.Windows;
+using Assets.Scripts.Infrastructure.UI.Factory;
 using Assets.Scripts.SpawnPool;
 using Assets.Scripts.UI;
 using UnityEngine;
@@ -26,7 +27,7 @@ namespace Assets.Scripts.Infrastructure.Factory
         private readonly IProgressService _progress;
         private readonly IWindowsService _windowsService;
         private readonly IInputService _inputService;
-
+        private readonly IUIFactory _uIFactory;
         private GameObject _player;
         private EnemySpawner _spawner;
 
@@ -34,14 +35,19 @@ namespace Assets.Scripts.Infrastructure.Factory
         public EnemySpawner Spawner => _spawner;
 
         public GameFactory(IAssetService asset, IStaticDataService staticData,
-            IProgressService progress, IWindowsService windowsService, IInputService inputService)
+            IProgressService progress, IWindowsService windowsService, IInputService inputService, IUIFactory uIFactory)
         {
             _asset = asset;
             _staticData = staticData;
             _progress = progress;
             _windowsService = windowsService;
             _inputService = inputService;
+            _uIFactory = uIFactory;
+            InitializaUIFactory();
         }
+
+        private void InitializaUIFactory() => 
+            _uIFactory.Initialize(this);
 
         public GameObject CreateHero(Vector3 at)
         {
@@ -57,6 +63,15 @@ namespace Assets.Scripts.Infrastructure.Factory
             _player.GetComponentInChildren<PlayerWeapon>().Initialize(playerData.AttackCountDown);
             _player.GetComponentInChildren<PlayerAttackTrigger>().Initialize(playerData.AttackRange);
             return _player;
+        }
+        public void ResetPlayer()
+        {
+            LevelStaticData levelData = _staticData.ForLevel(SceneManager.GetActiveScene().name);
+            _player.GetComponent<CharacterController>().enabled = false;
+            _player.transform.position = levelData.InitialHeroPosition;
+            _player.GetComponent<CharacterController>().enabled = true;
+            _player.GetComponent<PlayerHealth>().ResetHP();
+            _player.GetComponent<MoneyCollector>().ResetMoneyBank();
         }
 
         public GameObject CreateHud()
@@ -92,7 +107,7 @@ namespace Assets.Scripts.Infrastructure.Factory
             enemy.GetComponent<GenerateRandomPointInAttackArea>().Initialize(levelData.EnemySpawnAreaCenter
                 , levelData.EnemySpawnAreaSize);
             return enemy;
-        }
+        }        
 
         public GameObject CreatePlayerBaseTrigger(Vector3 playerBaseCenter, Vector3 playerBaseSize)
         {
@@ -113,6 +128,6 @@ namespace Assets.Scripts.Infrastructure.Factory
         {
             var money = _asset.Instantiate(AssetPath.Money, position);
             return money;
-        }
+        }        
     }
 }

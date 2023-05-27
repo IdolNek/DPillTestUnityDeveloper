@@ -59,14 +59,15 @@ namespace Assets.Scripts.Infrastructure.StateMachine.State
         private void RegisterGameFactory() =>
             _allServices.RegisterSingle<IGameFactory>(new GameFactory(_allServices.Single<IAssetService>()
                 , _allServices.Single<IStaticDataService>(), _allServices.Single<IProgressService>()
-                , _allServices.Single<IWindowsService>(), _allServices.Single<IInputService>()));
+                , _allServices.Single<IWindowsService>(), _allServices.Single<IInputService>()
+                , _allServices.Single<IUIFactory>()));
 
         private void RegisterWindowsService() =>
             _allServices.RegisterSingle<IWindowsService>(new WindowsService(_allServices.Single<IUIFactory>()));
 
         private void RegisterUiFactory() =>
             _allServices.RegisterSingle<IUIFactory>(new UIFactory(_allServices.Single<IAssetService>()
-                , _allServices.Single<IStaticDataService>(), _stateMachine));
+                , _allServices.Single<IStaticDataService>()));
 
         private void RegisterProgressService() =>
             _allServices.RegisterSingle<IProgressService>(new ProgressService());

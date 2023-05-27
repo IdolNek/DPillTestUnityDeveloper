@@ -1,4 +1,5 @@
-﻿using Assets.Scripts.Infrastructure.Services;
+﻿using Assets.Scripts.Infrastructure.Factory;
+using Assets.Scripts.Infrastructure.Services;
 
 namespace Assets.Scripts.Infrastructure.UI.Factory
 {
@@ -6,5 +7,6 @@ namespace Assets.Scripts.Infrastructure.UI.Factory
     {
         void CreateGameMenuWindow();
         void CreateUIRoot();
+        void Initialize(GameFactory gameFactory);
     }
 }

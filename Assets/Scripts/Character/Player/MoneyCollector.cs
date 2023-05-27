@@ -34,6 +34,11 @@ namespace Assets.Scripts.Character.Player
             {
                 _progressService.Money.Collect(money.GetComponent<Money>().Count);
             }
+            ResetMoneyBank();
+        }
+
+        public void ResetMoneyBank()
+        {
             foreach (var item in _moneyBank)
             {
                 Destroy(item);

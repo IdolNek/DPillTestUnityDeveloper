@@ -1,4 +1,5 @@
-﻿using Assets.Scripts.Infrastructure.StateMachine;
+﻿using Assets.Scripts.Infrastructure.Factory;
+using Assets.Scripts.Infrastructure.StateMachine;
 using Assets.Scripts.Infrastructure.StateMachine.State;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -10,10 +11,10 @@ namespace Assets.Scripts.UI
     {
         [SerializeField] private Button _exitButton;
         [SerializeField] private Button _restartButton;
-        private GameStateMachine _stateMachine;
+        private IGameFactory _gameFactory;
 
-        public void Construct(GameStateMachine stateMachine) => 
-            _stateMachine = stateMachine;
+        public void Construct(IGameFactory gameFactory) => 
+            _gameFactory = gameFactory;
 
         private void Awake()
         {
@@ -23,9 +24,8 @@ namespace Assets.Scripts.UI
 
         private void RestartGame()
         {
+            _gameFactory.ResetPlayer();
             ExitGameMenu();
-            //string ActiveScene = SceneManager.GetActiveScene().name;
-            //_stateMachine.Enter<LoadLevelState, string>(ActiveScene);
         }
 
         private void ExitGameMenu() => 
